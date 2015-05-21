@@ -6,6 +6,13 @@
         var ret = { "top": row.offsetTop + "px", "height": $scope.rowHeight + "px" };
         if (row.isAggRow) {
             ret.left = row.offsetLeft;
+        } else {
+            //TODO: check condition
+            if(this.$parent.options != undefined) {
+                if (this.$parent.options.highlightFn != undefined) {
+                    this.$parent.options.highlightFn(row, ret);
+                }
+            }
         }
         return ret;
     };
@@ -31,3 +38,4 @@
         return { "width": grid.rootDim.outerWidth + "px", "height": $scope.footerRowHeight + "px" };
     };
 };
+

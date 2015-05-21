@@ -23,6 +23,7 @@
                         options.ngGrid = null;
                         options.$gridScope = null;
                         options.$gridServices = null;
+						options.highlightFn = null;
 
                         $scope.domAccessProvider.grid = null;
 
