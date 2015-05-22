@@ -227,7 +227,7 @@ var ngGrid = function ($scope, options, sortService, domUtilityService, $filter,
     self.filteredRows = [];
 
     self.initTemplates = function() {
-        var templates = ['rowTemplate', 'aggregateTemplate', 'headerRowTemplate', 'checkboxCellTemplate', 'checkboxHeaderTemplate', 'menuTemplate', 'footerTemplate'];
+        var templates = ['rowTemplate', 'aggregateTemplate', 'headerRowTemplate', 'checkboxCellTemplate', 'checkboxHeaderTemplate', 'menuTemplate', 'footerTemplate', 'searchBarTemplate'];
 
         var promises = [];
         angular.forEach(templates, function(template) {
@@ -756,7 +756,8 @@ var ngGrid = function ($scope, options, sortService, domUtilityService, $filter,
     $scope.footerRowHeight = $scope.showFooter ? self.config.footerRowHeight : 0;
     $scope.showColumnMenu = self.config.showColumnMenu;
     $scope.forceSyncScrolling = self.config.forceSyncScrolling;
-    $scope.showMenu = false;
+    $scope.showMenu = false || self.config.showMenu;
+    $scope.showSearchBar = false || self.config.showSearchBar;
     $scope.configGroups = [];
     $scope.gridId = self.gridId;
     //Paging

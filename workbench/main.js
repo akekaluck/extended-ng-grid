@@ -147,7 +147,7 @@ function userController($scope) {
         multiSelect: true,
         columnDefs: 'myDefs2',
         enablePinning: true,
-        groupsCollapsedByDefault: false
+        groupsCollapsedByDefault: false, showSearchBar: true
     };
     $scope.changeData = function () {
         $scope.myData2.pop();

@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 05/22/2015 14:17
+* Compiled At: 05/22/2015 17:16
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -1372,7 +1372,7 @@ var ngGrid = function ($scope, options, sortService, domUtilityService, $filter,
     self.filteredRows = [];
 
     self.initTemplates = function() {
-        var templates = ['rowTemplate', 'aggregateTemplate', 'headerRowTemplate', 'checkboxCellTemplate', 'checkboxHeaderTemplate', 'menuTemplate', 'footerTemplate'];
+        var templates = ['rowTemplate', 'aggregateTemplate', 'headerRowTemplate', 'checkboxCellTemplate', 'checkboxHeaderTemplate', 'menuTemplate', 'footerTemplate', 'searchBarTemplate'];
 
         var promises = [];
         angular.forEach(templates, function(template) {
@@ -1852,7 +1852,8 @@ var ngGrid = function ($scope, options, sortService, domUtilityService, $filter,
     $scope.footerRowHeight = $scope.showFooter ? self.config.footerRowHeight : 0;
     $scope.showColumnMenu = self.config.showColumnMenu;
     $scope.forceSyncScrolling = self.config.forceSyncScrolling;
-    $scope.showMenu = false;
+    $scope.showMenu = false || self.config.showMenu;
+    $scope.showSearchBar = false || self.config.showSearchBar;
     $scope.configGroups = [];
     $scope.gridId = self.gridId;
     $scope.enablePaging = self.config.enablePaging;
@@ -2733,8 +2734,8 @@ var ngStyleProvider = function($scope, grid) {
         if (row.isAggRow) {
             ret.left = row.offsetLeft;
         } else {
-            if(this.$parent.options != undefined) {
-                if (this.$parent.options.highlightFn != undefined) {
+            if(this.$parent.options !== undefined) {
+                if (this.$parent.options.highlightFn !== undefined) {
                     this.$parent.options.highlightFn(row, ret);
                 }
             }
@@ -2979,6 +2980,21 @@ ngGridDirectives.directive('ngGridMenu', ['$compile', '$templateCache', function
         }
     };
     return ngGridMenu;
+}]);
+ngGridDirectives.directive('ngGridSearchBar', ['$compile', '$templateCache', function ($compile, $templateCache) {
+    var ngGridSearchBar = {
+        scope: false,
+        compile: function () {
+            return {
+                pre: function ($scope, iElement) {
+                    if (iElement.children().length === 0) {
+                        iElement.append($compile($templateCache.get($scope.gridId + 'searchBarTemplate.html'))($scope));
+                    }
+                }
+            };
+        }
+    };
+    return ngGridSearchBar;
 }]);
 ngGridDirectives.directive('ngGrid', ['$compile', '$filter', '$templateCache', '$sortService', '$domUtilityService', '$utilityService', '$timeout', '$parse', '$http', '$q', function ($compile, $filter, $templateCache, sortService, domUtilityService, $utils, $timeout, $parse, $http, $q) {
     var ngGridDirective = {
@@ -3548,31 +3564,58 @@ angular.module('ngGrid').run(['$templateCache', function($templateCache) {
     "</div>\n"
   );
   $templateCache.put('gridTemplate.html',
-    "<div class=\"ngTopPanel\" ng-class=\"{'ui-widget-header':jqueryUITheme, 'ui-corner-top': jqueryUITheme}\" ng-style=\"topPanelStyle()\">\n" +
-    "    <div class=\"ngGroupPanel\" ng-show=\"showGroupPanel()\" ng-style=\"groupPanelStyle()\">\n" +
-    "        <div class=\"ngGroupPanelDescription\" ng-show=\"configGroups.length == 0\">{{i18n.ngGroupPanelDescription}}</div>\n" +
-    "        <ul ng-show=\"configGroups.length > 0\" class=\"ngGroupList\">\n" +
-    "            <li class=\"ngGroupItem\" ng-repeat=\"group in configGroups\">\n" +
-    "                <span class=\"ngGroupElement\">\n" +
-    "                    <span class=\"ngGroupName\">{{group.displayName}}\n" +
-    "                        <span ng-click=\"removeGroup($index)\" class=\"ngRemoveGroup\">x</span>\n" +
-    "                    </span>\n" +
-    "                    <span ng-hide=\"$last\" class=\"ngGroupArrow\"></span>\n" +
-    "                </span>\n" +
-    "            </li>\n" +
-    "        </ul>\n" +
-    "    </div>\n" +
-    "    <div class=\"ngHeaderContainer\" ng-style=\"headerStyle()\">\n" +
-    "        <div ng-header-row class=\"ngHeaderScroller\" ng-style=\"headerScrollerStyle()\"></div>\n" +
-    "    </div>\n" +
-    "    <div ng-grid-menu></div>\n" +
-    "</div>\n" +
-    "<div class=\"ngViewport\" unselectable=\"on\" ng-viewport ng-class=\"{'ui-widget-content': jqueryUITheme}\" ng-style=\"viewportStyle()\">\n" +
-    "    <div class=\"ngCanvas\" ng-style=\"canvasStyle()\">\n" +
-    "        <div ng-style=\"rowStyle(row)\" ng-repeat=\"row in renderedRows\" ng-click=\"row.toggleSelected($event)\" ng-class=\"row.alternatingRowClass()\" ng-row></div>\n" +
-    "    </div>\n" +
-    "</div>\n" +
-    "<div ng-grid-footer></div>\n"
+    "<div ng-grid-search-bar></div>\r" +
+    "\n" +
+    "<div class=\"ngTopPanel\" ng-class=\"{'ui-widget-header':jqueryUITheme, 'ui-corner-top': jqueryUITheme}\" ng-style=\"topPanelStyle()\">\r" +
+    "\n" +
+    "    <div class=\"ngGroupPanel\" ng-show=\"showGroupPanel()\" ng-style=\"groupPanelStyle()\">\r" +
+    "\n" +
+    "        <div class=\"ngGroupPanelDescription\" ng-show=\"configGroups.length == 0\">{{i18n.ngGroupPanelDescription}}</div>\r" +
+    "\n" +
+    "        <ul ng-show=\"configGroups.length > 0\" class=\"ngGroupList\">\r" +
+    "\n" +
+    "            <li class=\"ngGroupItem\" ng-repeat=\"group in configGroups\">\r" +
+    "\n" +
+    "                <span class=\"ngGroupElement\">\r" +
+    "\n" +
+    "                    <span class=\"ngGroupName\">{{group.displayName}}\r" +
+    "\n" +
+    "                        <span ng-click=\"removeGroup($index)\" class=\"ngRemoveGroup\">x</span>\r" +
+    "\n" +
+    "                    </span>\r" +
+    "\n" +
+    "                    <span ng-hide=\"$last\" class=\"ngGroupArrow\"></span>\r" +
+    "\n" +
+    "                </span>\r" +
+    "\n" +
+    "            </li>\r" +
+    "\n" +
+    "        </ul>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"ngHeaderContainer\" ng-style=\"headerStyle()\">\r" +
+    "\n" +
+    "        <div ng-header-row class=\"ngHeaderScroller\" ng-style=\"headerScrollerStyle()\"></div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div ng-grid-menu></div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "<div class=\"ngViewport\" unselectable=\"on\" ng-viewport ng-class=\"{'ui-widget-content': jqueryUITheme}\" ng-style=\"viewportStyle()\">\r" +
+    "\n" +
+    "    <div class=\"ngCanvas\" ng-style=\"canvasStyle()\">\r" +
+    "\n" +
+    "        <div ng-style=\"rowStyle(row)\" ng-repeat=\"row in renderedRows\" ng-click=\"row.toggleSelected($event)\" ng-class=\"row.alternatingRowClass()\" ng-row></div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "<div ng-grid-footer></div>\r" +
+    "\n"
   );
   $templateCache.put('headerCellTemplate.html',
     "<div class=\"ngHeaderSortColumn {{col.headerClass}}\" ng-style=\"{'cursor': col.cursor}\" ng-class=\"{ 'ngSorted': !col.noSortVisible() }\">\n" +
@@ -3614,6 +3657,23 @@ angular.module('ngGrid').run(['$templateCache', function($templateCache) {
     "<div ng-style=\"{ 'cursor': row.cursor }\" ng-repeat=\"col in renderedColumns\" ng-class=\"col.colIndex()\" class=\"ngCell {{col.cellClass}}\">\n" +
     "\t<div class=\"ngVerticalBar\" ng-style=\"{height: rowHeight}\" ng-class=\"{ ngVerticalBarVisible: !$last }\">&nbsp;</div>\n" +
     "\t<div ng-cell></div>\n" +
+    "</div>"
+  );
+  $templateCache.put('searchBarTemplate.html',
+    "<div ng-show=\"showSearchBar\" class=\"ngSearchBar\">\n" +
+    "    <div>\n" +
+    "        <input placeholder=\"{{i18n.ngSearchPlaceHolder}}\" type=\"text\" ng-model=\"filterText\"/>\n" +
+    "    </div>\n" +
+    "    <!--<div>-->\n" +
+    "        <!--<span class=\"ngMenuText\">{{i18n.ngMenuText}}</span>-->\n" +
+    "        <!--<ul class=\"ngColList\">-->\n" +
+    "            <!--<li class=\"ngColListItem\" ng-repeat=\"col in columns | ngColumns\">-->\n" +
+    "                <!--<label><input ng-disabled=\"col.pinned\" type=\"checkbox\" class=\"ngColListCheckbox\" ng-model=\"col.visible\"/>{{col.displayName}}</label>-->\n" +
+    "\t\t\t\t<!--<a title=\"Group By\" ng-class=\"col.groupedByClass()\" ng-show=\"col.groupable && col.visible\" ng-click=\"groupBy(col)\"></a>-->\n" +
+    "\t\t\t\t<!--<span class=\"ngGroupingNumber\" ng-show=\"col.groupIndex > 0\">{{col.groupIndex}}</span>          -->\n" +
+    "            <!--</li>-->\n" +
+    "        <!--</ul>-->\n" +
+    "    <!--</div>-->\n" +
     "</div>"
   );
 

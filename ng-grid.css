@@ -178,6 +178,16 @@
   border: 2px solid #d4d4d4;
   z-index: 1;
 }
+.ngSearchBar {
+  padding: 5px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #bdd0cb;
+  position: relative;
+  border: 2px solid #d4d4d4;
+  z-index: 1;
+}
 .ngColListCheckbox {
   position: relative;
   right: 3px;

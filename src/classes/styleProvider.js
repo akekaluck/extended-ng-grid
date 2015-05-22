@@ -8,8 +8,8 @@
             ret.left = row.offsetLeft;
         } else {
             //TODO: check condition
-            if(this.$parent.options != undefined) {
-                if (this.$parent.options.highlightFn != undefined) {
+            if(this.$parent.options !== undefined) {
+                if (this.$parent.options.highlightFn !== undefined) {
                     this.$parent.options.highlightFn(row, ret);
                 }
             }
