@@ -1,0 +1,292 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.21
+3 info using node@v0.10.30
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ 'd:\\Akekaluck\\git\\github\\extened-ng-grid',
+5 verbose install   [ 'grunt',
+5 verbose install     'grunt-cli',
+5 verbose install     'grunt-jsdoc',
+5 verbose install     'grunt-karma',
+5 verbose install     'grunt-contrib-watch',
+5 verbose install     'grunt-contrib-concat',
+5 verbose install     'grunt-contrib-uglify',
+5 verbose install     'grunt-angular-templates',
+5 verbose install     'grunt-contrib-clean',
+5 verbose install     'grunt-contrib-jasmine',
+5 verbose install     'grunt-contrib-less',
+5 verbose install     'grunt-contrib-jshint' ] ]
+6 info preinstall ng-grid@2.0.14
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping grunt@~0.4.1 d:\Akekaluck\git\github\extened-ng-grid
+9 verbose already installed skipping grunt-cli@~0.1.7 d:\Akekaluck\git\github\extened-ng-grid
+10 verbose cache add [ 'grunt-jsdoc@~0.2.4', null ]
+11 verbose cache add name=undefined spec="grunt-jsdoc@~0.2.4" args=["grunt-jsdoc@~0.2.4",null]
+12 verbose parsed url { protocol: null,
+12 verbose parsed url   slashes: null,
+12 verbose parsed url   auth: null,
+12 verbose parsed url   host: null,
+12 verbose parsed url   port: null,
+12 verbose parsed url   hostname: null,
+12 verbose parsed url   hash: null,
+12 verbose parsed url   search: null,
+12 verbose parsed url   query: null,
+12 verbose parsed url   pathname: 'grunt-jsdoc@~0.2.4',
+12 verbose parsed url   path: 'grunt-jsdoc@~0.2.4',
+12 verbose parsed url   href: 'grunt-jsdoc@~0.2.4' }
+13 verbose already installed skipping grunt-karma@~0.4.4 d:\Akekaluck\git\github\extened-ng-grid
+14 verbose already installed skipping grunt-contrib-watch@~0.3.1 d:\Akekaluck\git\github\extened-ng-grid
+15 verbose already installed skipping grunt-contrib-concat@~0.1.3 d:\Akekaluck\git\github\extened-ng-grid
+16 verbose already installed skipping grunt-contrib-uglify@~0.1.2 d:\Akekaluck\git\github\extened-ng-grid
+17 verbose already installed skipping grunt-angular-templates@~0.5 d:\Akekaluck\git\github\extened-ng-grid
+18 verbose already installed skipping grunt-contrib-clean@~0.4.0 d:\Akekaluck\git\github\extened-ng-grid
+19 verbose already installed skipping grunt-contrib-jasmine@~0.3.3 d:\Akekaluck\git\github\extened-ng-grid
+20 verbose already installed skipping grunt-contrib-less@~0.5.1 d:\Akekaluck\git\github\extened-ng-grid
+21 verbose already installed skipping grunt-contrib-jshint@~0.5.4 d:\Akekaluck\git\github\extened-ng-grid
+22 verbose cache add name="grunt-jsdoc" spec="~0.2.4" args=["grunt-jsdoc","~0.2.4"]
+23 verbose parsed url { protocol: null,
+23 verbose parsed url   slashes: null,
+23 verbose parsed url   auth: null,
+23 verbose parsed url   host: null,
+23 verbose parsed url   port: null,
+23 verbose parsed url   hostname: null,
+23 verbose parsed url   hash: null,
+23 verbose parsed url   search: null,
+23 verbose parsed url   query: null,
+23 verbose parsed url   pathname: '~0.2.4',
+23 verbose parsed url   path: '~0.2.4',
+23 verbose parsed url   href: '~0.2.4' }
+24 verbose addNamed [ 'grunt-jsdoc', '~0.2.4' ]
+25 verbose addNamed [ null, '>=0.2.4-0 <0.3.0-0' ]
+26 silly lockFile 2fac868b-grunt-jsdoc-0-2-4 grunt-jsdoc@~0.2.4
+27 verbose lock grunt-jsdoc@~0.2.4 C:\Users\u0145690\AppData\Roaming\npm-cache\2fac868b-grunt-jsdoc-0-2-4.lock
+28 silly addNameRange { name: 'grunt-jsdoc',
+28 silly addNameRange   range: '>=0.2.4-0 <0.3.0-0',
+28 silly addNameRange   hasData: false }
+29 verbose request where is /grunt-jsdoc
+30 verbose request registry https://registry.npmjs.org/
+31 verbose request id 1482199a930171b9
+32 verbose url raw /grunt-jsdoc
+33 verbose url resolving [ 'https://registry.npmjs.org/', './grunt-jsdoc' ]
+34 verbose url resolved https://registry.npmjs.org/grunt-jsdoc
+35 verbose request where is https://registry.npmjs.org/grunt-jsdoc
+36 info trying registry request attempt 1 at 14:15:45
+37 verbose etag "D6Q56ZC3QQ93PRDHWBX2UEEGZ"
+38 http GET https://registry.npmjs.org/grunt-jsdoc
+39 http 304 https://registry.npmjs.org/grunt-jsdoc
+40 silly registry.get cb [ 304,
+40 silly registry.get   { date: 'Fri, 22 May 2015 07:15:46 GMT',
+40 silly registry.get     via: '1.1 varnish',
+40 silly registry.get     'cache-control': 'max-age=60',
+40 silly registry.get     etag: '"D6Q56ZC3QQ93PRDHWBX2UEEGZ"',
+40 silly registry.get     age: '56',
+40 silly registry.get     connection: 'keep-alive',
+40 silly registry.get     'x-served-by': 'cache-hkg6825-HKG',
+40 silly registry.get     'x-cache': 'HIT',
+40 silly registry.get     'x-cache-hits': '1',
+40 silly registry.get     'x-timer': 'S1432278946.212787,VS0,VE0',
+40 silly registry.get     vary: 'Accept' } ]
+41 verbose etag https://registry.npmjs.org/grunt-jsdoc from cache
+42 silly addNameRange number 2 { name: 'grunt-jsdoc',
+42 silly addNameRange   range: '>=0.2.4-0 <0.3.0-0',
+42 silly addNameRange   hasData: true }
+43 silly addNameRange versions [ 'grunt-jsdoc',
+43 silly addNameRange   [ '0.2.3',
+43 silly addNameRange     '0.2.4',
+43 silly addNameRange     '0.3.0',
+43 silly addNameRange     '0.3.1',
+43 silly addNameRange     '0.3.2',
+43 silly addNameRange     '0.3.3',
+43 silly addNameRange     '0.4.0',
+43 silly addNameRange     '0.4.1',
+43 silly addNameRange     '0.4.2',
+43 silly addNameRange     '0.4.3',
+43 silly addNameRange     '0.5.0',
+43 silly addNameRange     '0.5.1',
+43 silly addNameRange     '0.5.2',
+43 silly addNameRange     '0.5.3',
+43 silly addNameRange     '0.5.4',
+43 silly addNameRange     '0.5.5',
+43 silly addNameRange     '0.5.6',
+43 silly addNameRange     '0.6.0',
+43 silly addNameRange     '0.5.7',
+43 silly addNameRange     '0.6.1',
+43 silly addNameRange     '0.6.2',
+43 silly addNameRange     '0.5.8',
+43 silly addNameRange     '0.6.3' ] ]
+44 verbose addNamed [ 'grunt-jsdoc', '0.2.4' ]
+45 verbose addNamed [ '0.2.4', '0.2.4' ]
+46 silly lockFile c0ddaf62-grunt-jsdoc-0-2-4 grunt-jsdoc@0.2.4
+47 verbose lock grunt-jsdoc@0.2.4 C:\Users\u0145690\AppData\Roaming\npm-cache\c0ddaf62-grunt-jsdoc-0-2-4.lock
+48 silly lockFile c0ddaf62-grunt-jsdoc-0-2-4 grunt-jsdoc@0.2.4
+49 silly lockFile c0ddaf62-grunt-jsdoc-0-2-4 grunt-jsdoc@0.2.4
+50 silly lockFile 2fac868b-grunt-jsdoc-0-2-4 grunt-jsdoc@~0.2.4
+51 silly lockFile 2fac868b-grunt-jsdoc-0-2-4 grunt-jsdoc@~0.2.4
+52 silly resolved [ { name: 'grunt-jsdoc',
+52 silly resolved     description: 'Integrates jsdoc3 generation into your Grunt build',
+52 silly resolved     version: '0.2.4',
+52 silly resolved     homepage: 'https://github.com/krampstudio/grunt-jsdoc-plugin',
+52 silly resolved     author:
+52 silly resolved      { name: 'Bertrand Chevrier',
+52 silly resolved        email: 'chevrier.bertrand@gmail.com',
+52 silly resolved        url: 'http://krampstudio.com' },
+52 silly resolved     repository:
+52 silly resolved      { type: 'git',
+52 silly resolved        url: 'git://github.com/krampstudio/grunt-jsdoc-plugin.git' },
+52 silly resolved     bugs: { url: 'https://github.com/krampstudio/grunt-jsdoc-plugin/issues' },
+52 silly resolved     licenses: [ [Object] ],
+52 silly resolved     main: 'Gruntfile.js',
+52 silly resolved     bin: { 'grunt-jsdoc': 'bin/grunt-jsdoc' },
+52 silly resolved     engines: { node: '>= 0.8.0' },
+52 silly resolved     scripts: { test: 'grunt nodeunit' },
+52 silly resolved     devDependencies:
+52 silly resolved      { grunt: '~0.4.x',
+52 silly resolved        'grunt-contrib-nodeunit': '~0.1.2',
+52 silly resolved        'grunt-contrib-jshint': '~0.1.1' },
+52 silly resolved     dependencies: { jsdoc3: 'git+https://github.com/jsdoc3/jsdoc.git#v3.1.1' },
+52 silly resolved     peerDependencies: { grunt: '0.4.x' },
+52 silly resolved     keywords: [ 'gruntplugin', 'grunt', 'jsdoc', 'jsdoc3' ],
+52 silly resolved     _id: 'grunt-jsdoc@0.2.4',
+52 silly resolved     dist:
+52 silly resolved      { shasum: 'e8fec999cbaf6076f32766c28cef70923f5df5fb',
+52 silly resolved        tarball: 'http://registry.npmjs.org/grunt-jsdoc/-/grunt-jsdoc-0.2.4.tgz' },
+52 silly resolved     _npmVersion: '1.1.66',
+52 silly resolved     _npmUser: { name: 'krampstudio', email: 'chevrier.bertrand@gmail.com' },
+52 silly resolved     maintainers: [ [Object] ],
+52 silly resolved     directories: {},
+52 silly resolved     _shasum: 'e8fec999cbaf6076f32766c28cef70923f5df5fb',
+52 silly resolved     _from: 'grunt-jsdoc@~0.2.4',
+52 silly resolved     _resolved: 'https://registry.npmjs.org/grunt-jsdoc/-/grunt-jsdoc-0.2.4.tgz',
+52 silly resolved     readme: 'ERROR: No README data found!' } ]
+53 info install grunt-jsdoc@0.2.4 into d:\Akekaluck\git\github\extened-ng-grid
+54 info installOne grunt-jsdoc@0.2.4
+55 verbose node_modules\grunt-jsdoc unbuild
+56 verbose tar unpack C:\Users\u0145690\AppData\Roaming\npm-cache\grunt-jsdoc\0.2.4\package.tgz
+57 silly lockFile 6bbf8828-ng-grid-node-modules-grunt-jsdoc tar://d:\Akekaluck\git\github\extened-ng-grid\node_modules\grunt-jsdoc
+58 verbose lock tar://d:\Akekaluck\git\github\extened-ng-grid\node_modules\grunt-jsdoc C:\Users\u0145690\AppData\Roaming\npm-cache\6bbf8828-ng-grid-node-modules-grunt-jsdoc.lock
+59 silly lockFile 2b59fb78-he-grunt-jsdoc-0-2-4-package-tgz tar://C:\Users\u0145690\AppData\Roaming\npm-cache\grunt-jsdoc\0.2.4\package.tgz
+60 verbose lock tar://C:\Users\u0145690\AppData\Roaming\npm-cache\grunt-jsdoc\0.2.4\package.tgz C:\Users\u0145690\AppData\Roaming\npm-cache\2b59fb78-he-grunt-jsdoc-0-2-4-package-tgz.lock
+61 silly gunzTarPerm modes [ '777', '666' ]
+62 silly gunzTarPerm extractEntry package.json
+63 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
+64 silly gunzTarPerm extractEntry .npmignore
+65 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
+66 silly gunzTarPerm extractEntry README.md
+67 silly gunzTarPerm modified mode [ 'README.md', 420, 438 ]
+68 silly gunzTarPerm extractEntry Gruntfile.js
+69 silly gunzTarPerm modified mode [ 'Gruntfile.js', 420, 438 ]
+70 silly gunzTarPerm extractEntry bin/grunt-jsdoc
+71 silly gunzTarPerm modified mode [ 'bin/grunt-jsdoc', 420, 438 ]
+72 silly gunzTarPerm extractEntry tasks/jsdoc-plugin.js
+73 silly gunzTarPerm modified mode [ 'tasks/jsdoc-plugin.js', 420, 438 ]
+74 silly gunzTarPerm extractEntry doc/JsdocTest.html
+75 silly gunzTarPerm modified mode [ 'doc/JsdocTest.html', 420, 438 ]
+76 silly gunzTarPerm extractEntry doc/index.html
+77 silly gunzTarPerm modified mode [ 'doc/index.html', 420, 438 ]
+78 silly gunzTarPerm extractEntry doc/styles/prettify-jsdoc.css
+79 silly gunzTarPerm modified mode [ 'doc/styles/prettify-jsdoc.css', 420, 438 ]
+80 silly gunzTarPerm extractEntry doc/styles/jsdoc-default.css
+81 silly gunzTarPerm modified mode [ 'doc/styles/jsdoc-default.css', 420, 438 ]
+82 silly gunzTarPerm extractEntry doc/styles/prettify-tomorrow.css
+83 silly gunzTarPerm modified mode [ 'doc/styles/prettify-tomorrow.css', 420, 438 ]
+84 silly gunzTarPerm extractEntry doc/6006565820.html
+85 silly gunzTarPerm modified mode [ 'doc/6006565820.html', 420, 438 ]
+86 silly gunzTarPerm extractEntry doc/c5f91297c9.html
+87 silly gunzTarPerm modified mode [ 'doc/c5f91297c9.html', 420, 438 ]
+88 silly gunzTarPerm extractEntry doc/scripts/prettify/prettify.js
+89 silly gunzTarPerm modified mode [ 'doc/scripts/prettify/prettify.js', 420, 438 ]
+90 silly gunzTarPerm extractEntry doc/scripts/prettify/lang-css.js
+91 silly gunzTarPerm modified mode [ 'doc/scripts/prettify/lang-css.js', 420, 438 ]
+92 silly gunzTarPerm extractEntry doc/scripts/prettify/Apache-License-2.0.txt
+93 silly gunzTarPerm modified mode [ 'doc/scripts/prettify/Apache-License-2.0.txt', 420, 438 ]
+94 silly gunzTarPerm extractEntry doc/92656911a3.html
+95 silly gunzTarPerm modified mode [ 'doc/92656911a3.html', 420, 438 ]
+96 silly gunzTarPerm extractEntry doc/aa515f2664.html
+97 silly gunzTarPerm modified mode [ 'doc/aa515f2664.html', 420, 438 ]
+98 silly gunzTarPerm extractEntry tmp/index.html
+99 silly gunzTarPerm modified mode [ 'tmp/index.html', 420, 438 ]
+100 silly gunzTarPerm extractEntry tmp/styles/prettify-jsdoc.css
+101 silly gunzTarPerm modified mode [ 'tmp/styles/prettify-jsdoc.css', 420, 438 ]
+102 silly gunzTarPerm extractEntry tmp/styles/jsdoc-default.css
+103 silly gunzTarPerm modified mode [ 'tmp/styles/jsdoc-default.css', 420, 438 ]
+104 silly gunzTarPerm extractEntry tmp/scripts/prettify/prettify.js
+105 silly gunzTarPerm modified mode [ 'tmp/scripts/prettify/prettify.js', 420, 438 ]
+106 silly gunzTarPerm extractEntry tmp/scripts/prettify/lang-css.js
+107 silly gunzTarPerm modified mode [ 'tmp/scripts/prettify/lang-css.js', 420, 438 ]
+108 silly gunzTarPerm extractEntry tmp/scripts/prettify/Apache-License-2.0.txt
+109 silly gunzTarPerm modified mode [ 'tmp/scripts/prettify/Apache-License-2.0.txt', 420, 438 ]
+110 silly gunzTarPerm extractEntry test/jsdoc-plugin_test.js
+111 silly gunzTarPerm modified mode [ 'test/jsdoc-plugin_test.js', 420, 438 ]
+112 silly gunzTarPerm extractEntry LICENSE-MIT
+113 silly gunzTarPerm modified mode [ 'LICENSE-MIT', 420, 438 ]
+114 silly gunzTarPerm extractEntry .travis.yml
+115 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
+116 silly lockFile 6bbf8828-ng-grid-node-modules-grunt-jsdoc tar://d:\Akekaluck\git\github\extened-ng-grid\node_modules\grunt-jsdoc
+117 silly lockFile 6bbf8828-ng-grid-node-modules-grunt-jsdoc tar://d:\Akekaluck\git\github\extened-ng-grid\node_modules\grunt-jsdoc
+118 silly lockFile 2b59fb78-he-grunt-jsdoc-0-2-4-package-tgz tar://C:\Users\u0145690\AppData\Roaming\npm-cache\grunt-jsdoc\0.2.4\package.tgz
+119 silly lockFile 2b59fb78-he-grunt-jsdoc-0-2-4-package-tgz tar://C:\Users\u0145690\AppData\Roaming\npm-cache\grunt-jsdoc\0.2.4\package.tgz
+120 info preinstall grunt-jsdoc@0.2.4
+121 verbose readDependencies using package.json deps
+122 verbose readDependencies using package.json deps
+123 verbose cache add [ 'jsdoc3@git+https://github.com/jsdoc3/jsdoc.git#v3.1.1',
+123 verbose cache add   null ]
+124 verbose cache add name=undefined spec="jsdoc3@git+https://github.com/jsdoc3/jsdoc.git#v3.1.1" args=["jsdoc3@git+https://github.com/jsdoc3/jsdoc.git#v3.1.1",null]
+125 verbose parsed url { protocol: null,
+125 verbose parsed url   slashes: null,
+125 verbose parsed url   auth: null,
+125 verbose parsed url   host: null,
+125 verbose parsed url   port: null,
+125 verbose parsed url   hostname: null,
+125 verbose parsed url   hash: '#v3.1.1',
+125 verbose parsed url   search: null,
+125 verbose parsed url   query: null,
+125 verbose parsed url   pathname: 'jsdoc3@git+https://github.com/jsdoc3/jsdoc.git',
+125 verbose parsed url   path: 'jsdoc3@git+https://github.com/jsdoc3/jsdoc.git',
+125 verbose parsed url   href: 'jsdoc3@git+https://github.com/jsdoc3/jsdoc.git#v3.1.1' }
+126 verbose cache add name="jsdoc3" spec="git+https://github.com/jsdoc3/jsdoc.git#v3.1.1" args=["jsdoc3","git+https://github.com/jsdoc3/jsdoc.git#v3.1.1"]
+127 verbose parsed url { protocol: 'git+https:',
+127 verbose parsed url   slashes: true,
+127 verbose parsed url   auth: null,
+127 verbose parsed url   host: 'github.com',
+127 verbose parsed url   port: null,
+127 verbose parsed url   hostname: 'github.com',
+127 verbose parsed url   hash: '#v3.1.1',
+127 verbose parsed url   search: null,
+127 verbose parsed url   query: null,
+127 verbose parsed url   pathname: '/jsdoc3/jsdoc.git',
+127 verbose parsed url   path: '/jsdoc3/jsdoc.git',
+127 verbose parsed url   href: 'git+https://github.com/jsdoc3/jsdoc.git#v3.1.1' }
+128 silly lockFile 7da7dbf1-ttps-github-com-jsdoc3-jsdoc-git https://github.com/jsdoc3/jsdoc.git
+129 verbose lock https://github.com/jsdoc3/jsdoc.git C:\Users\u0145690\AppData\Roaming\npm-cache\7da7dbf1-ttps-github-com-jsdoc3-jsdoc-git.lock
+130 verbose addRemoteGit [ 'https://github.com/jsdoc3/jsdoc.git', 'v3.1.1' ]
+131 warn `git config --get remote.origin.url` returned wrong result (https://github.com/jsdoc3/jsdoc.git)
+132 error git clone https://github.com/jsdoc3/jsdoc.git Cloning into bare repository 'C:\Users\u0145690\AppData\Roaming\npm-cache\_git-remotes\https-github-com-jsdoc3-jsdoc-git-7da7dbf1'...
+132 error git clone https://github.com/jsdoc3/jsdoc.git fatal: unable to access 'https://github.com/jsdoc3/jsdoc.git/': Failed connect to github.com:443; No error
+133 silly lockFile 7da7dbf1-ttps-github-com-jsdoc3-jsdoc-git https://github.com/jsdoc3/jsdoc.git
+134 silly lockFile 7da7dbf1-ttps-github-com-jsdoc3-jsdoc-git https://github.com/jsdoc3/jsdoc.git
+135 verbose about to build d:\Akekaluck\git\github\extened-ng-grid\node_modules\grunt-jsdoc
+136 verbose node_modules\grunt-jsdoc unbuild
+137 info preuninstall grunt-jsdoc@0.2.4
+138 info uninstall grunt-jsdoc@0.2.4
+139 verbose true,d:\Akekaluck\git\github\extened-ng-grid\node_modules,d:\Akekaluck\git\github\extened-ng-grid\node_modules unbuild grunt-jsdoc@0.2.4
+140 verbose d:\Akekaluck\git\github\extened-ng-grid\node_modules\.bin,[object Object] binRoot
+141 info postuninstall grunt-jsdoc@0.2.4
+142 error Error: Command failed: Cloning into bare repository 'C:\Users\u0145690\AppData\Roaming\npm-cache\_git-remotes\https-github-com-jsdoc3-jsdoc-git-7da7dbf1'...
+142 error fatal: unable to access 'https://github.com/jsdoc3/jsdoc.git/': Failed connect to github.com:443; No error
+142 error
+142 error     at ChildProcess.exithandler (child_process.js:648:15)
+142 error     at ChildProcess.emit (events.js:98:17)
+142 error     at maybeClose (child_process.js:756:16)
+142 error     at Process.ChildProcess._handle.onexit (child_process.js:823:5)
+143 error If you need help, you may report this *entire* log,
+143 error including the npm and node versions, at:
+143 error     <http://github.com/npm/npm/issues>
+144 error System Windows_NT 6.1.7601
+145 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+146 error cwd d:\Akekaluck\git\github\extened-ng-grid
+147 error node -v v0.10.30
+148 error npm -v 1.4.21
+149 error code 128
+150 verbose exit [ 1, true ]
