@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 05/22/2015 17:16
+* Compiled At: 06/16/2015 17:53
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -3040,7 +3040,33 @@ var ngStyleProvider = function($scope, grid) {
         return { "height": col.headerRowHeight + "px" };
     };
     $scope.rowStyle = function (row) {
-        var ret = { "top": row.offsetTop + "px", "height": $scope.rowHeight + "px" };
+        var rowHeight = $scope.rowHeight;
+
+        var cols = row.elm.context.children.length;
+
+        var getRowContentHeight = function (row) {
+            var height = 0;
+            angular.element.swap(row, { height: 0, overflow: "scroll" }, function () {
+                height = row.scrollHeight;
+            });
+            return height;
+        };
+        for (var r = 0; r < cols; r++) {
+            var newRowContentHeight = getRowContentHeight(row.elm.context.children[r]);
+            if (rowHeight < newRowContentHeight){
+                rowHeight = newRowContentHeight;
+            }
+        }
+
+        if (grid.rowCache[row.rowIndex + 1] != null){
+            grid.rowCache[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+        }
+        else
+        {
+            grid.$viewport[0].style.height = row.offsetTop + rowHeight + 20 + "px";
+        }
+
+        var ret = { "top": row.offsetTop + "px", "height": rowHeight + "px" };
         if (row.isAggRow) {
             ret.left = row.offsetLeft;
         } else {
@@ -3051,6 +3077,7 @@ var ngStyleProvider = function($scope, grid) {
                 }
             }
         }
+//        console.log(ret.height);
         return ret;
     };
     $scope.canvasStyle = function() {
@@ -3075,8 +3102,6 @@ var ngStyleProvider = function($scope, grid) {
         return { "width": grid.rootDim.outerWidth + "px", "height": $scope.footerRowHeight + "px" };
     };
 };
-
-
 ngGridDirectives.directive('ngCellHasFocus', ['$domUtilityService',
     function (domUtilityService) {
         var focusOnInputElement = function($scope, elm) {

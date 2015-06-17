@@ -33,6 +33,7 @@
 .ngVerticalBarVisible {
   width: 1px;
   background-color: #d4d4d4;
+  height: 100% !important;
 }
 #testDataLength {
   position: absolute;
@@ -365,6 +366,8 @@
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: normal;
+  word-break: break-all;
 }
 .ngSelectionCell {
   margin-top: 9px;

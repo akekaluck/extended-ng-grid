@@ -147,6 +147,7 @@ function userController($scope) {
         multiSelect: true,
         columnDefs: 'myDefs2',
         enablePinning: true,
+        enableColumnResize: true,
         groupsCollapsedByDefault: false, showSearchBar: true
     };
     $scope.changeData = function () {
