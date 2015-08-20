@@ -148,7 +148,8 @@ function userController($scope) {
         columnDefs: 'myDefs2',
         enablePinning: true,
         enableColumnResize: true,
-        groupsCollapsedByDefault: false, showSearchBar: true
+        groupsCollapsedByDefault: false, showSearchBar: true, autoRowHeight: true
+//        plugins:[new ngGridAutoRowHeightPlugin()]
     };
     $scope.changeData = function () {
         $scope.myData2.pop();

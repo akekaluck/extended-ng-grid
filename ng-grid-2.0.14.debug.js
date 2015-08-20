@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 06/16/2015 17:53
+* Compiled At: 08/20/2015 11:20
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -3035,27 +3035,96 @@ var ngSelectionProvider = function (grid, $scope, $parse, $utils) {
     };
 };
 
+//var ngStyleProvider = function($scope, grid) {
+//    $scope.headerCellStyle = function(col) {
+//        return { "height": col.headerRowHeight + "px" };
+//    };
+//    $scope.rowStyle = function (row) {
+//        var ret = { "top": row.offsetTop + "px", "height": $scope.rowHeight + "px" };
+//        if (row.isAggRow) {
+//            ret.left = row.offsetLeft;
+//        } else {
+//            //TODO: check condition
+//            if(this.$parent.options !== undefined) {
+//                if (this.$parent.options.highlightFn !== undefined) {
+//                    this.$parent.options.highlightFn(row, ret);
+//                }
+//            }
+//        }
+//        return ret;
+//    };
+//    $scope.canvasStyle = function() {
+//        return { "height": grid.maxCanvasHt + "px" };
+//    };
+//    $scope.headerScrollerStyle = function() {
+//        return { "height": grid.config.headerRowHeight + "px" };
+//    };
+//    $scope.topPanelStyle = function() {
+//        return { "width": grid.rootDim.outerWidth + "px", "height": $scope.topPanelHeight() + "px" };
+//    };
+//    $scope.headerStyle = function() {
+//        return { "width": grid.rootDim.outerWidth + "px", "height": grid.config.headerRowHeight + "px" };
+//    };
+//    $scope.groupPanelStyle = function () {
+//        return { "width": grid.rootDim.outerWidth + "px", "height": "32px" };
+//    };
+//    $scope.viewportStyle = function() {
+//        return { "width": grid.rootDim.outerWidth + "px", "height": $scope.viewportDimHeight() + "px" };
+//    };
+//    $scope.footerStyle = function() {
+//        return { "width": grid.rootDim.outerWidth + "px", "height": $scope.footerRowHeight + "px" };
+//    };
+//};
+var autoRowHeight = function(row){
+    //
+    var maxCellHeigh = 0;
+    row.elm.find('.ngCell [ng-cell-text]').each(function(j, c){
+        var cellHeight = $(c).outerHeight();
+        if(maxCellHeigh < cellHeight){
+            maxCellHeigh = cellHeight;
+        }
+    });
+    console.log('row[' + row.rowIndex+ '] = '+ maxCellHeigh);
+    return maxCellHeigh + 20;
+
+//        rowHeight = 0;
+//        var cols = row.elm.context.children.length;
+//        var getRowContentHeight = function (row) {
+//            var height = 0;
+//            angular.element.swap(row, { height: 0, overflow: "scroll" }, function () {
+//                height = row.scrollHeight;
+//            });
+//            return height;
+//        };
+//        for (var r = 0; r < cols; r++) {
+//            var newRowContentHeight = getRowContentHeight(row.elm.context.children[r]);
+//            if (rowHeight < newRowContentHeight){
+//                rowHeight = newRowContentHeight;
+//                console.log(rowHeight);
+//                console.log(newRowContentHeight);
+//            }
+//        }
+//
+//        rowHeight = newRowContentHeight;
+
+
+//        if (grid.rowCache[row.rowIndex + 1] != null) {
+//            grid.rowCache[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+//        }
+//        if (grid.rowCache[row.rowIndex - 1] != null) {
+//            row.offsetTop = grid.rowCache[row.rowIndex - 1].clone.elm.outerHeight() + grid.rowCache[row.rowIndex - 1].clone.offsetTop;
+//            grid.rowCache[row.rowIndex - 1].clone.offsetTop = row.offsetTop;
+//        }
+
+}
 var ngStyleProvider = function($scope, grid) {
     $scope.headerCellStyle = function(col) {
         return { "height": col.headerRowHeight + "px" };
     };
     $scope.rowStyle = function (row) {
         var rowHeight = $scope.rowHeight;
-
-        var cols = row.elm.context.children.length;
-
-        var getRowContentHeight = function (row) {
-            var height = 0;
-            angular.element.swap(row, { height: 0, overflow: "scroll" }, function () {
-                height = row.scrollHeight;
-            });
-            return height;
-        };
-        for (var r = 0; r < cols; r++) {
-            var newRowContentHeight = getRowContentHeight(row.elm.context.children[r]);
-            if (rowHeight < newRowContentHeight){
-                rowHeight = newRowContentHeight;
-            }
+        if(grid.config.autoRowHeight) {
+            rowHeight = autoRowHeight(row, grid, rowHeight);
         }
 
         if (grid.rowCache[row.rowIndex + 1] != null){
@@ -3077,11 +3146,12 @@ var ngStyleProvider = function($scope, grid) {
                 }
             }
         }
-//        console.log(ret.height);
+        console.log(ret.height);
         return ret;
     };
     $scope.canvasStyle = function() {
         return { "height": grid.maxCanvasHt + "px" };
+//        return { "height": "" };
     };
     $scope.headerScrollerStyle = function() {
         return { "height": grid.config.headerRowHeight + "px" };
@@ -3102,6 +3172,7 @@ var ngStyleProvider = function($scope, grid) {
         return { "width": grid.rootDim.outerWidth + "px", "height": $scope.footerRowHeight + "px" };
     };
 };
+
 ngGridDirectives.directive('ngCellHasFocus', ['$domUtilityService',
     function (domUtilityService) {
         var focusOnInputElement = function($scope, elm) {
@@ -3365,6 +3436,7 @@ ngGridDirectives.directive('ngGrid', ['$compile', '$filter', '$templateCache', '
                         options.$gridScope = null;
                         options.$gridServices = null;
 						options.highlightFn = null;
+                        options.autoRowHeight = null;
 
                         $scope.domAccessProvider.grid = null;
 
@@ -3661,9 +3733,9 @@ ngGridDirectives.directive('ngRow', ['$compile', '$domUtilityService', '$templat
                     } else {
                         iElement.append($compile($templateCache.get($scope.gridId + 'rowTemplate.html'))($scope));
                     }
-					$scope.$on('$destroy', $scope.$on('ngGridEventDigestRow', function(){
-						domUtilityService.digest($scope);
-					}));
+                    $scope.$on('$destroy', $scope.$on('ngGridEventDigestRow', function(){
+                        domUtilityService.digest($scope);
+                    }));
                 }
             };
         }
