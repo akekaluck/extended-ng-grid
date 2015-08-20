@@ -26,7 +26,7 @@ function ngGridAutoRowHeightPlugin () {
                 self.grid.config.rowHeight = rowHeight;
 
                 //update grid's scope.rowHeight as vertical bars height depends on it
-                if (scope.$$phase == '$apply' || scope.$$phase == '$digest') {
+                if (scope.$$phase === '$apply' || scope.$$phase === '$digest') {
                     self.grid.$root.scope().rowHeight = rowHeight;
                 } else {
                     scope.$apply(function(){
@@ -49,4 +49,4 @@ function ngGridAutoRowHeightPlugin () {
         self.scope.$watch('catHashKeys()', innerRecalcForData);
         self.scope.$watch(self.grid.config.data, recalcHeightForData);
     };
-};
+}
