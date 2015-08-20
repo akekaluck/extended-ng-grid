@@ -90,10 +90,10 @@ function userController($scope) {
         grid: undefined
     };
 
-    $scope.myDefs2 = [{ field: 'Sku', displayName: 'My Sku', enableCellEdit: true },
-        { field: 'Vendor', displayName: 'Supplier', enableCellEdit: true },
+    $scope.myDefs2 = [{ field: 'Sku', displayName: 'My Sku', enableCellEdit: true , cellTemplate: '<a>{{row.getProperty(col.field)}}</a>'},
+        { field: 'Vendor', displayName: 'Supplier', enableCellEdit: true},
         { field: 'SeasonCode', displayName: 'My SeasonCode', enableCellEdit: true },
-        { field: 'Mfg_Id', displayName: 'Manufacturer ID', enableCellEdit: true },
+        { field: 'Mfg_Id', displayName: 'Manufacturer ID', enableCellEdit: true, cellTemplate: '<a style="overflow-wrap: break-word;">{{row.getProperty(col.field)}}</a>' },
         { field: 'UPC', displayName: 'Bar Code', enableCellEdit: true }];
     self.selectionchanging = function (a, b) {
         return true;
