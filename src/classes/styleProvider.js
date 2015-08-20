@@ -93,10 +93,10 @@ var ngStyleProvider = function($scope, grid) {
         if (grid.rowCache[row.rowIndex + 1] != null){
             grid.rowCache[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
         }
-        else
-        {
-            grid.$viewport[0].style.height = row.offsetTop + rowHeight + 20 + "px";
-        }
+//        else
+//        {
+//            grid.$viewport[0].style.height = row.offsetTop + rowHeight + 20 + "px";
+//        }
 
         var ret = { "top": row.offsetTop + "px", "height": rowHeight + "px" };
         if (row.isAggRow) {

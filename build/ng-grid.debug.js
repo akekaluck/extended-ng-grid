@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/20/2015 11:20
+* Compiled At: 08/20/2015 11:27
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -3130,10 +3130,10 @@ var ngStyleProvider = function($scope, grid) {
         if (grid.rowCache[row.rowIndex + 1] != null){
             grid.rowCache[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
         }
-        else
-        {
-            grid.$viewport[0].style.height = row.offsetTop + rowHeight + 20 + "px";
-        }
+//        else
+//        {
+//            grid.$viewport[0].style.height = row.offsetTop + rowHeight + 20 + "px";
+//        }
 
         var ret = { "top": row.offsetTop + "px", "height": rowHeight + "px" };
         if (row.isAggRow) {
