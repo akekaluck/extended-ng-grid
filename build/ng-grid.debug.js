@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/20/2015 12:42
+* Compiled At: 08/20/2015 12:47
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -3078,13 +3078,17 @@ var ngSelectionProvider = function (grid, $scope, $parse, $utils) {
 var autoRowHeight = function(row){
     //
     var maxCellHeigh = 0;
-    row.elm.find('.ngCell [ng-cell-text]').each(function(j, c){
-        var cellHeight = $(c).outerHeight();
-        if(maxCellHeigh < cellHeight){
+    var cells = row.elm.find('.ngCell [ng-cell-text]');
+
+    //row.elm.find('.ngCell [ng-cell-text]').each(function(j, c){
+    for(var i = 0; i< cells.length; i++) {
+        var cellHeight = $(cells[i]).outerHeight();
+        if (maxCellHeigh < cellHeight) {
             maxCellHeigh = cellHeight;
         }
-    });
-    console.log('row[' + row.rowIndex+ '] = '+ maxCellHeigh);
+    }
+    //});
+//    console.log('row[' + row.rowIndex+ '] = '+ maxCellHeigh);
     return maxCellHeigh + 20;
 
 //        rowHeight = 0;
