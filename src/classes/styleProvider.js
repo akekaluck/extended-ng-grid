@@ -90,9 +90,13 @@ var ngStyleProvider = function($scope, grid) {
             rowHeight = autoRowHeight(row, grid, rowHeight);
         }
 
-        if (grid.rowCache[row.rowIndex + 1] != null){
-            grid.rowCache[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+
+        if (grid.filteredRows[row.rowIndex + 1] != null) {
+            if (grid.filteredRows[row.rowIndex + 1].clone != undefined) {
+                grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+            }
         }
+
 //        else
 //        {
 //            grid.$viewport[0].style.height = row.offsetTop + rowHeight + 20 + "px";

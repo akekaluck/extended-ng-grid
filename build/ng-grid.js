@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/20/2015 11:27
+* Compiled At: 08/20/2015 12:42
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -2746,9 +2746,10 @@ var ngStyleProvider = function($scope, grid) {
         if(grid.config.autoRowHeight) {
             rowHeight = autoRowHeight(row, grid, rowHeight);
         }
-
-        if (grid.rowCache[row.rowIndex + 1] != null){
-            grid.rowCache[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+        if (grid.filteredRows[row.rowIndex + 1] != null) {
+            if (grid.filteredRows[row.rowIndex + 1].clone != undefined) {
+                grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+            }
         }
         var ret = { "top": row.offsetTop + "px", "height": rowHeight + "px" };
         if (row.isAggRow) {
