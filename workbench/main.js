@@ -145,6 +145,7 @@ function userController($scope) {
         beforeSelectionChange: self.selectionchanging,
         showFilter: true,
         multiSelect: true,
+//        groups: ['Vendor'],
         columnDefs: 'myDefs2',
         enablePinning: true,
         enableColumnResize: true,

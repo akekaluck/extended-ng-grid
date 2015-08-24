@@ -2,7 +2,7 @@
 * ng-grid JavaScript Library
 * Authors: https://github.com/angular-ui/ng-grid/blob/master/README.md 
 * License: MIT (http://www.opensource.org/licenses/mit-license.php)
-* Compiled At: 08/20/2015 14:38
+* Compiled At: 08/24/2015 15:51
 ***********************************************/
 (function(window, $) {
 'use strict';
@@ -2204,7 +2204,11 @@ var ngRowFactory = function (grid, $scope, domUtilityService, $templateCache, $u
         for (var i = self.renderedRange.topRow; i < self.renderedRange.bottomRow; i++) {
             if (grid.filteredRows[i]) {
                 grid.filteredRows[i].rowIndex = i;
-                grid.filteredRows[i].offsetTop = i * grid.config.rowHeight;
+                if((angular.isDefined(grid.filteredRows[i].clone)) && (grid.filteredRows.length == grid.rowCache.length)){
+                    grid.filteredRows[i].offsetTop = grid.filteredRows[i].clone.offsetTop;
+                }else {
+                    grid.filteredRows[i].offsetTop = i * grid.config.rowHeight;
+                }
                 rowArr.push(grid.filteredRows[i]);
             }
         }
@@ -2726,7 +2730,7 @@ var ngSelectionProvider = function (grid, $scope, $parse, $utils) {
 };
 
 
-var autoRowHeight = function(row){
+var autoRowHeight = function(row, grid, rowHeight){
     var maxCellHeigh = 0;
     var cells = row.elm.find('.ngCell');
     for(var i = 0; i< cells.length; i++) {
@@ -2741,7 +2745,11 @@ var autoRowHeight = function(row){
             maxCellHeigh = cellHeight;
         }
     }
-    return maxCellHeigh + 20;
+    if(row.isAggRow){
+        return rowHeight;
+    } else {
+        return maxCellHeigh + 20;
+    }
 };
 var ngStyleProvider = function($scope, grid) {
     $scope.headerCellStyle = function(col) {
@@ -2752,9 +2760,18 @@ var ngStyleProvider = function($scope, grid) {
         if(grid.config.autoRowHeight) {
             rowHeight = autoRowHeight(row, grid, rowHeight);
         }
-        if (grid.filteredRows[row.rowIndex + 1] != null) {
-            if (grid.filteredRows[row.rowIndex + 1].clone !== undefined) {
-                grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+
+        if(grid.config.groups.length > 0){
+        }else {
+            if (grid.filteredRows[row.rowIndex + 1] != null) {
+                if (grid.filteredRows[row.rowIndex + 1].clone !== undefined) {
+                    var rowH = row.offsetTop + rowHeight;
+                    if(grid.filteredRows[row.rowIndex + 1].clone.offsetTop != rowH) {
+                        grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+                    }else {
+
+                    }
+                }
             }
         }
         var ret = { "top": row.offsetTop + "px", "height": rowHeight + "px" };

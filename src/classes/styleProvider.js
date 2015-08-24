@@ -38,7 +38,7 @@
 //        return { "width": grid.rootDim.outerWidth + "px", "height": $scope.footerRowHeight + "px" };
 //    };
 //};
-var autoRowHeight = function(row){
+var autoRowHeight = function(row, grid, rowHeight){
     //
     var maxCellHeigh = 0;
 //    var cells = row.elm.find('.ngCell [ng-cell-text]');
@@ -61,7 +61,11 @@ var autoRowHeight = function(row){
     }
 
 //    console.log('row[' + row.rowIndex+ '] = '+ maxCellHeigh);
-    return maxCellHeigh + 20;
+    if(row.isAggRow){
+        return rowHeight;
+    } else {
+        return maxCellHeigh + 20;
+    }
 
 //        rowHeight = 0;
 //        var cols = row.elm.context.children.length;
@@ -103,10 +107,28 @@ var ngStyleProvider = function($scope, grid) {
             rowHeight = autoRowHeight(row, grid, rowHeight);
         }
 
-
-        if (grid.filteredRows[row.rowIndex + 1] != null) {
-            if (grid.filteredRows[row.rowIndex + 1].clone !== undefined) {
-                grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+        if(grid.config.groups.length > 0){
+//            var childrenHeigh = 0;
+//            row.children.each(function(i,c){
+//                childrenHeigh += $(c).outerHeight();
+//            });
+//            if (grid.rowFactory.aggCache[row.aggIndex + 1] != null) {
+//                if (grid.rowFactory.aggCache[row.aggIndex + 1].clone !== undefined) {
+//                    grid.rowFactory.aggCache[row.aggIndex + 1].clone.offsetTop = childrenHeigh;
+//                }
+//            }
+        }else {
+            if (grid.filteredRows[row.rowIndex + 1] != null) {
+                if (grid.filteredRows[row.rowIndex + 1].clone !== undefined) {
+                    var rowH = row.offsetTop + rowHeight;
+                    if(grid.filteredRows[row.rowIndex + 1].clone.offsetTop != rowH) {
+                        grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+//                        grid.filteredRows[row.rowIndex + 1].clone.currentRowHeight = rowHeight;
+//                        console.log('update row offsetTope: ' + row.rowIndex + ' = ' +rowH);
+                    }else {
+//                        console.log('grid.filteredRows[row.rowIndex + 1].clone.offsetTop == rowH');
+                    }
+                }
             }
         }
 
