@@ -1,9 +1,10 @@
 {
   "name": "ng-grid",
   "version": "2.0.14",
+  "homepage": "",
   "description": "Angular data grid",
   "keywords": [
-   
+
   ],
   "license": "MIT",
   "main": ["./ng-grid.css", "./build/ng-grid.js"],
