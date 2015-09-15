@@ -100,14 +100,16 @@ var ngStyleProvider = function($scope, grid) {
     $scope.rowStyle = function (row) {
         var rowHeight = $scope.rowHeight;
         if(grid.config.autoRowHeight) {
-            rowHeight = autoRowHeight(row, grid, rowHeight);
-        }
-
-
-        if (grid.filteredRows[row.rowIndex + 1] != null) {
-            if (grid.filteredRows[row.rowIndex + 1].clone !== undefined) {
-                grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
-            }
+          rowHeight = autoRowHeight(row, grid, rowHeight);
+          if($scope.rowHeight > rowHeight){
+              rowHeight = $scope.rowHeight;
+          }
+          
+          if (grid.filteredRows[row.rowIndex + 1] != null) {
+              if (grid.filteredRows[row.rowIndex + 1].clone !== undefined) {
+                  grid.filteredRows[row.rowIndex + 1].clone.offsetTop = row.offsetTop + rowHeight;
+              }
+          }
         }
 
 //        else

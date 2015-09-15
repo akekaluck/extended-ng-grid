@@ -45,7 +45,7 @@ function userController($scope) {
         if (!self.poInit || self.gettingData) {
             self.poInit = true;
             return;
-        } 
+        }
         self.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
     }, true);
     $scope.$watch('filterOptions', function () {
@@ -143,12 +143,13 @@ function userController($scope) {
         data: 'myData2',
         selectedItems: $scope.mySelections2,
         beforeSelectionChange: self.selectionchanging,
+        groups:['Vendor'],
         showFilter: true,
         multiSelect: true,
         columnDefs: 'myDefs2',
         enablePinning: true,
         enableColumnResize: true,
-        groupsCollapsedByDefault: false, showSearchBar: true , autoRowHeight: true
+        groupsCollapsedByDefault: false, showSearchBar: true , autoRowHeight: false
 //        plugins:[new ngGridAutoRowHeightPlugin()]
     };
     $scope.changeData = function () {
@@ -189,13 +190,13 @@ function userController($scope) {
 				  { 'Sku': 'Q-1505237', 'Vendor': {'name':'REEB'}, 'SeasonCode': '9145', 'Mfg_Id': '371-6918101', 'UPC': '553657492213' },
 				  { 'Sku': 'M-1626429', 'Vendor': {'name':'REEB'}, 'SeasonCode': '1846', 'Mfg_Id': '242-5856618', 'UPC': '029388467459' },
 				  { 'Sku': 'Y-1914652', 'Vendor': {'name':'REEB'}, 'SeasonCode': '5553', 'Mfg_Id': '80-9194110', 'UPC': '433360049369' }];
-				  
+
     $scope.myDefs3 = [{ field: 'Sku', displayName: 'My Sku' },
         { field: 'Vendor.name', displayName: 'Supplier', cellFilter: 'branding' },
         { field: 'SeasonCode', displayName: 'My SeasonCode', cellTemplate: '<input style="width:100%;height:100%;" class="ui-widget input" type="text" ng-readonly="!row.selected" ng-model="row.entity[col.field]"/>' },
         { field: 'Mfg_Id', displayName: 'Manufacturer ID' },
         { field: 'UPC', displayName: 'Bar Code' }];
-		
+
 	$scope.filteringText = '';
     $scope.gridOptions3 = {
         data: 'myData3',
@@ -203,7 +204,7 @@ function userController($scope) {
 		filterOptions: {filterText:'filteringText', useExternalFilter: false},
         columnDefs: 'myDefs3'
     };
-	
+
 	$scope.$on('filterChanged', function(evt, text){
 		$scope.filteringText = text;
 	});
