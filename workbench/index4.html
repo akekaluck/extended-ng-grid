@@ -12,10 +12,52 @@
     <script type="text/javascript" src="../lib/angular.js"></script>
     <script type="text/javascript" src="../lib/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="../build/ng-grid.debug.js"></script>
+    <script type="text/javascript" src="../plugins/ng-grid-auto-row-height.js"></script>
     <script type="text/javascript" src="main.js"></script>
+
+    <!--<script type="text/javascript" src="../src/classes/flexible-heigh.js"></script>-->
     <script>
         angular.module('myApp',['ngGrid']);
     </script>
+    <style>
+
+        /*.ngCellText {*/
+            /*padding: 5px;*/
+            /*-moz-box-sizing: border-box;*/
+            /*-webkit-box-sizing: border-box;*/
+            /*box-sizing: border-box;*/
+            /*white-space: nowrap;*/
+            /*-ms-text-overflow: ellipsis;*/
+            /*-o-text-overflow: ellipsis;*/
+            /*text-overflow: ellipsis;*/
+            /* overflow: hidden; */
+            /*white-space: normal;*/
+            /*word-break: break-all;*/
+             /*overflow: hidden;*/
+            /*white-space: normal !important;*/
+            /*height: auto !important;*/
+            /*word-wrap: break-word !important;*/
+        /*}*/
+        /*.col0 {
+            height: auto !important;
+        }
+        .col1 {
+            height: auto !important;
+        }
+        .col2 {
+            height: auto !important;
+        }
+        .col3 {
+            height: auto !important;
+        }
+        .col4 {
+            height: auto !important;
+        }
+        .ngGrid.autoRowHeight>div .ngCellText {
+            white-space: normal !important;
+            height: auto !important;
+        }*/
+    </style>
 </head>
     <body ng-app="myApp" ng-controller="userController">
         <div style="width: 400px; height: 600px;" ng-grid="gridOptions2">

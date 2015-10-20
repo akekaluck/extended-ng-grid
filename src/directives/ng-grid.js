@@ -24,6 +24,7 @@
                         options.$gridScope = null;
                         options.$gridServices = null;
 						options.highlightFn = null;
+                        options.autoRowHeight = null;
 
                         $scope.domAccessProvider.grid = null;
 
